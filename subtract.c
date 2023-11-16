@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <unistd.h>
 
 /**
  * main - Entry point of the program.
@@ -11,6 +12,7 @@ int main(void)
 {
 	/* Declare variables to store the numbers */
 	int num1, num2;
+	pid_t ppid;
 
 	/* Prompt the user to enter the first number */
 	printf("Enter the first number: ");
@@ -22,9 +24,15 @@ int main(void)
 
 	/* Calculate the difference of the two numbers */
 	int difference = num1 - num2;
+	
+	/* Get shells ppid */
+	ppid = getppid();
 
 	/* Display the result */
 	printf("The difference of %d and %d is: %d\n", num1, num2, difference);
+
+	/* Display ppid */
+	printf ("My ppid is %u\n", ppid);
 
 	/* Return 0 to indicate successful execution */
 	return (0);
